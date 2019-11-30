@@ -4,7 +4,6 @@ import Component from '../../Class/Component';
 class Header extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
     }
     onClick(e) {
         console.log(e)
@@ -23,18 +22,18 @@ class Header extends Component {
                         'img',
                         {
                             className: 'logo',
-                            src: this.props.src,
-                            alt: this.props.button_t
+                            src: 'this.props.src',
+                            alt: ''
 
                         }),
-                    this.createElement('h1',null,this.props.title),
+                    this.createElement('h1',null,'this.props.title'),
                     this.createElement(
                         'button',
                         {
                             onClick: this.onClick,
 
                         },
-                        this.props.button_t)
+                        'this.props.button_t')
                 ] 
             )
        )

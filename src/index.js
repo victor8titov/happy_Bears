@@ -1,6 +1,12 @@
-import Header from './Component/Header';
+
+import { view } from './Class/View';
 
 import './style.scss';
+
+import Header from './Component/Header';
+import Footer from './Component/Footer';
+import Nav from './Component/Nav';
+
 
 let props = {
     src: 'banana.jpg',
@@ -8,5 +14,11 @@ let props = {
     button_t: 'london',
 }
 
-let header = new Header(props);
-let container = document.querySelector('.container').append(header.render());
+view.pipeline(
+    [
+        [Header,props],
+        Nav,
+        Footer
+    ], document.querySelector('.container')
+    )
+ 

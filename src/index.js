@@ -22,3 +22,4 @@ view.pipeline(
     ], document.querySelector('.container')
     )
  
+view.replace(Nav,null,document.querySelector('.header'));

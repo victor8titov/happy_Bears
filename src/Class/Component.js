@@ -14,6 +14,9 @@ class Component {
             props.hasOwnProperty('className') ? element.className = props.className : undefined;
             props.hasOwnProperty('src')  ? element.src = props.src : undefined;
             props.hasOwnProperty('alt') ? element.alt = props.alt : undefined;
+            props.hasOwnProperty('alt') ? element.alt = props.alt : undefined;
+            props.hasOwnProperty('style') ? element.style.cssText = props.style : undefined;
+
             
             /* Form attribute */
             props.hasOwnProperty('type') ? element.type = props.type : undefined;

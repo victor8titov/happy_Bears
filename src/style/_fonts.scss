@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "Actor";
+    src: url("/fonts/Actor-Regular.eot");
+    /* IE9 */
+    src: url("/fonts/Actor-Regular.eot?#iefix") format("embedded-opentype"), 
+      url("/fonts/Actor-Regular.woff") format("woff"), 
+      url("/fonts/Actor-Regular.ttf") format("truetype"), 
+      url("/fonts/Actor-Regular.svg#Actor") format("svg");
+    /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+  }
+  
+  @font-face {
+    font-family: "Adamina";
+    src: url("/fonts/Adamina-Regular.eot");
+    /* IE9 */
+    src: url("/fonts/Adamina-Regular.eot?#iefix") format("embedded-opentype"), 
+      url("/fonts/Adamina-Regular.woff") format("woff"), 
+      url("/fonts/Adamina-Regular.ttf") format("truetype"), 
+      url("/fonts/Adamina-Regular.svg#Adamina") format("svg");
+    /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+  }

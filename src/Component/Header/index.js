@@ -26,7 +26,8 @@ class Header extends Component {
                             alt: ''
 
                         }),
-                    this.createElement('h1',null,'this.props.title'),
+                    this.createElement('h1',null,'h1 text'),
+                    this.createElement('p',null,'Enim ex sint deserunt ex voluptate elit nisi quis ad commodo.'),
                     this.createElement(
                         'button',
                         {

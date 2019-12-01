@@ -1,5 +1,5 @@
 import Component from '../../Class/Component';
-
+import './style.scss';
 class Footer extends Component {
     constructor(props) {
         super(props);
@@ -7,8 +7,10 @@ class Footer extends Component {
 
     render() {
         return (
-            this.createElement('footer',null, 
-                this.createElement('p',{className: 'footer',},'Все права защиты happy bears'))
+            this.createElement('footer',{className:'footer'}, 
+                this.createElement('div',{className:'footer__container'},
+                    this.createElement('p',{className: 'footer__title',},'Все права защищены Happy Bears 2019&#169;'))
+            )
         )
     }
 }

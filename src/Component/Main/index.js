@@ -1,22 +1,16 @@
 import Component from '../../Class/Component';
-
+import Card from '../Card';
+import './style.scss';
 
 class Main extends Component {
     render() {
-        
-        if (this.props) {
-            
-            //var URL = this.props ? this.props.settings.url_img + this.props.bears.b1.thumbnail : '';
-            console.log(URL);
-        }
-        
-
+        let props = this.props;
         return (
-            this.createElement('div',{className: 'main'},
-                this.createElement('img',{
-                        //src: URL,
-                        alt: 'bears',
-                        style: 'width:220px; height: 146px; border-radius: 10px;'}))
+            this.createElement('section',{className: 'main'},
+                !props ? 
+                    this.createElement('div',{className:'main__not-content'},'Заявок нет.') :
+                    props.bears.map((bear,id)=>this.componentTo(Card,{bear, id, url_img:props.settings.url_img}) ) 
+            )
         )
     }
 }

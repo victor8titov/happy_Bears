@@ -1,0 +1,96 @@
+@import '../../style/_flexboxgrid';
+
+.nav {
+    &__container {
+        @include grid-container;
+        
+        
+        padding: 42px 0 39px 0;
+    }
+    &__row {
+        @include grid-row(xs,space-between);
+        
+    }
+    &__title {
+        @include grid-col((
+            sm: 5,
+        ))
+        margin: 0;
+        font-weight: normal;
+    }
+    &__reserve {
+        @include grid-col((
+            sm: 3,
+        ))
+    }
+    
+    &__label {
+        position: relative;
+        margin-left: 10px;
+        cursor:pointer;
+        &:before {
+            
+            content:'';
+            display: inline-block;
+
+            width: 20px;
+            height: 20px;
+
+            border-radius: 6px;
+            background: #e4e4e4;
+            
+            position: absolute;
+            left: -30px;
+            top: 0px;
+            transition: all 300ms ease-in-out;
+        }
+        
+    }
+    &__checkbox {
+        opacity: 0;
+    }
+
+    &__checkbox:checked + &__label:before {
+        content: "\2714";
+        text-align: center;
+        color: #767676;
+    }
+    &__label:hover:before {
+        background: #FEED7E;
+    }
+    &__checkbox:focus + &__label:before {
+        background: #FEED7E;
+    }
+
+    &__filter {
+        @include grid-col((
+            sm: 3,
+        ))
+        
+    }
+    &__select {
+        
+        background: #E4E4E4;
+        outline: none;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 20px 7px 10px;
+        cursor: pointer;
+        width: 220px;
+
+
+        // убираем стерлку 
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    &__select::-ms-expand {  /* для IE */ 
+        display: none;
+    }
+   
+    &__select  option {
+        box-sizing: content-box;
+        filter: hue-rotate(125deg);
+        padding: 10px;
+    }
+}

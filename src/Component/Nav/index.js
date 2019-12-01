@@ -1,4 +1,5 @@
 import Component from '../../Class/Component';
+import './style.scss';
 
 class Nav extends Component {
     constructor(props) {
@@ -6,28 +7,46 @@ class Nav extends Component {
     }
     render() {
         return (
-            this.createElement('section',{className:'nav'},
-                [
-                    this.createElement('div',{className: 'checkbox'},[
-                        this.createElement('p',null,'уже в зоопарке'),
-                        this.createElement('input',{
-                            type: 'checkbox',
-                            name: 'inZoo',
-                            })]
-                            ),
-                    this.createElement('div',{className: 'option'},
-                        this.createElement('select',{
-                            size: 1,
-                            name: 'type'
-                            },[
-                                this.createElement('option',{value: 'op1'},'option 1'),
-                                this.createElement('option',{value: 'op2'},'option 2'),
-                                this.createElement('option',{value: 'op3', selected: true},'option 3'),
-                                this.createElement('option',{value: 'op4'},'option 4'),
-                                this.createElement('option',{value: 'op5'},'option 5'),
-                                this.createElement('option',{value: 'op6'},'option 6'),
-                            ]) )
-                ])
+            this.createElement('nav',{className:'nav'},
+                this.createElement('div',{className:'nav__container'},
+                    this.createElement('div',{className:'nav__row'},
+                    [
+                        this.createElement('h2',{className:'nav__title'},'Поступившие заявки'),
+                        this.createElement('div',{className:'nav__reserve'},
+                            [
+                                this.createElement('input',{
+                                    type: 'checkbox',
+                                    id: 'reserve',
+                                    name: 'reserve',
+                                    className: 'nav__checkbox'
+                                }),
+                                this.createElement('label',{
+                                    for: 'reserve',
+                                    className: 'nav__label'
+                                },'Только из заповедника'),
+                            ]),
+                        this.createElement('div',{className:'nav__filter'},
+                            this.createElement('select',{
+                                id: 'filter',
+                                size: 1,
+                                name: 'filter',
+                                className: 'nav__select'
+                            },
+                                [
+                                    this.createElement('option',{
+                                        value: 'enter',
+                                        selected: true
+                                    },'Входящие медведи'),
+                                    this.createElement('option',{
+                                        value: 'accept',
+                                    },'Принятые медведи'),
+                                    this.createElement('option',{
+                                        value: 'reject',
+                                    },'Отклонёные медведи'),
+    
+                                ]))
+                    ])
+                    ))
         )
     }
 }

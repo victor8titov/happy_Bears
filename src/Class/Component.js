@@ -2,7 +2,7 @@ class Component {
     constructor(props) {
         this.props = props;
     }
-    ComponentTo(component,props) {
+    componentTo(component,props) {
         return (new component(props)).render();
     }
     render(){}
@@ -16,6 +16,10 @@ class Component {
             props.hasOwnProperty('alt') ? element.alt = props.alt : undefined;
             props.hasOwnProperty('alt') ? element.alt = props.alt : undefined;
             props.hasOwnProperty('style') ? element.style.cssText = props.style : undefined;
+            props.hasOwnProperty('data') ? Array.isArray(props.data) ? 
+                props.data.map(data=>element.setAttribute(`data-${data.name}`,data.value)) :
+                element.setAttribute(`data-${props.data.name}`,props.data.value) : 
+                undefined;
 
             
             /* Form attribute */
@@ -25,7 +29,8 @@ class Component {
             props.hasOwnProperty('id') ? element.id = props.id : undefined;
             props.hasOwnProperty('size') ? element.size = props.size : undefined;
             props.hasOwnProperty('selected') ? element.selected = props.selected : undefined;
-
+            props.hasOwnProperty('for') ? element.setAttribute('for',props.for) : undefined;
+            
             /* Events list */
             props.onClick !== undefined ? Component.onClick(props.onClick,element) : undefined; 
         }

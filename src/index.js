@@ -13,6 +13,7 @@ window.addEventListener('load',()=>{
     view.pipeline(
         [
             Header,
+            Nav,
             Main,
             Footer
         ], document.querySelector('.container')

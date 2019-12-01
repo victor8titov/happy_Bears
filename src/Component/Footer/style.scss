@@ -1,0 +1,18 @@
+@import '../../style/_flexboxgrid';
+
+.footer {
+    color: #F4F4F4;
+    background-color: #0E4447;
+    text-align: center;
+    padding: 12px 0 11px 0;
+    margin-top: 70px;
+
+
+    &__container {
+        @include grid-container;
+    }
+    &__title {
+        line-height: 17px;
+        margin:0;
+    }
+}

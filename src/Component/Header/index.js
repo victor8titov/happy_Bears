@@ -1,5 +1,5 @@
 import Component from '../../Class/Component';
-
+import './style.scss';
 
 class Header extends Component {
     constructor(props) {
@@ -13,28 +13,19 @@ class Header extends Component {
     }
     render() {
        return (
-            this.createElement('div',
+            this.createElement('header',
                 {
                     className: 'header',         
                 },
                 [
-                    this.createElement(
-                        'img',
-                        {
-                            className: 'logo',
-                            src: 'this.props.src',
-                            alt: ''
-
-                        }),
-                    this.createElement('h1',null,'h1 text'),
-                    this.createElement('p',null,'Enim ex sint deserunt ex voluptate elit nisi quis ad commodo.'),
-                    this.createElement(
-                        'button',
-                        {
-                            onClick: this.onClick,
-
-                        },
-                        'this.props.button_t')
+                   this.createElement('div',{className: 'header__container'},[
+                        this.createElement('img',{
+                                src:'img/logo_bear.svg',
+                                alt: 'logo bear',
+                                className: 'header__logo',
+                            }),
+                        this.createElement('h1',{className: 'header__title'},'happy Bears')
+                   ])
                 ] 
             )
        )

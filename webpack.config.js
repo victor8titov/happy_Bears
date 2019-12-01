@@ -25,7 +25,7 @@ module.exports = {
             ],
           },
           {
-			test: /main\.scss$/,
+            test: /\.scss$/,
 			use: [
 					'style-loader',
 					MiniCssExtractPlugin.loader,
@@ -40,7 +40,14 @@ module.exports = {
 					options: { sourceMap: true }
 					}
 				]
-			}
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'file-loader',
+                options: {
+                  name: '[name].[ext]'
+                }
+            }
         ],
 	   },
 	   plugins: [

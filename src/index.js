@@ -5,6 +5,7 @@ import Nav from './Component/Nav';
 import Main from './Component/Main';
 import Footer from './Component/Footer';
 import Spinner from './Component/Spinner';
+import BigCard from './Component/BigCard';
 
 const URL = "http://localhost:8080/data.json";
 
@@ -32,7 +33,10 @@ window.addEventListener('load',()=>{
             error => console.log('An error occurred.', error) )
         .then( json => {
             view.replace(Main,json,document.querySelector('.main'))
+            
         });
+
+    
 
 });
 

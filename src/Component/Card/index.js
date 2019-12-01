@@ -1,13 +1,40 @@
 import Component from '../../Class/Component';
 import './style.scss';
 import Button from '../Button';
+import Bigcard from '../BigCard';
 
 class Card extends Component {
-    onAccept() {
+    constructor(props){
+        super(props);
+        this.onShowBigCards = this.onShowBigCards.bind(this);
+    }
+    onAccept(e) {
+        e.stopPropagation();
         console.log('onAccept')
     }
-    onReject() {
+    onReject(e) {
+        e.stopPropagation();
         console.log('onReject')
+    }
+    onShowBigCards(e) {
+        /* создаем большую карточку из шаблона */
+        let bigcard = this.componentTo(Bigcard,{
+            bear:this.props.bear,
+            url: this.props.url_img,
+            onAccept: this.onAccept,
+            onReject: this.onReject,
+        });
+
+        /* размываем фон классом с фильтром */
+        document.querySelector('.container').classList.add('container_blur')
+
+        /* 
+            создаем блок, который добовляется в документ
+            в блок добовляется сгенерированая большая карточка
+        */
+        let modal = document.createElement('div');
+        modal.append(bigcard);
+        document.getElementsByTagName('body')[0].append(modal);
     }
     render() {
         let { bear, id, url_img} = this.props;
@@ -24,7 +51,8 @@ class Card extends Component {
                             name: 'reserve',
                             value: bear.reserve
                         }
-                    ]
+                    ],
+                onClick: this.onShowBigCards
 
                 },[
                     this.createElement('div',{

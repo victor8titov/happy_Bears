@@ -16,9 +16,6 @@ h1 {
     font-size: 2.4rem;
     color: #f4f4f4;
 }
-h2 {
-
-}
 h3 {
     font-size: 1.8rem;
     line-height: 2.2rem;
@@ -35,6 +32,14 @@ h4 {
     margin: 0;
     text-align: center;
     font-weight: normal;
+}
+.container {
+    transition: 400ms filter;
+}
+.container_blur {
+    -webkit-filter: blur(15px);
+    -moz-filter: blur(15px);
+    filter: blur(15px);
 }
 
 

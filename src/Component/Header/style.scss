@@ -2,20 +2,30 @@
 .header {
     background-color: #0E4447;
     
-    .header__container {
+    &__container {
         @include grid-container;
         display: flex;
-        padding: 14px 0;
+        padding: 15px;
+        
     }
-    .header__title {
+    &__title {
         line-height: 3.3rem;
-        //line-height: 6rem;
         margin: 0;
         display: inline-block;
     }
-    .header__logo {
+    &__logo {
         width: 58px;
         height: 33px;
         margin-right: 12px;
     }
 }
+
+@media (min-width: 576px) {
+    .header {
+        &__container {
+            padding: 14px 0;
+        }
+    }
+  }
+  
+  

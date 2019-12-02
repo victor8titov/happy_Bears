@@ -12,13 +12,11 @@ class Card extends Component {
         this.id = `b${this.props.id}`;
     }
     onAccept(e) {
-        console.log('onAccept')
         e.stopPropagation();
         this.setStatus('accept');
         this.animationAfterDefined();
     }
     onReject(e) {
-        console.log('onReject')
         e.stopPropagation();
         this.setStatus('reject');
         this.animationAfterDefined();

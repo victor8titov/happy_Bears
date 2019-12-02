@@ -1,5 +1,6 @@
 import Component from '../../Class/Component';
 import './style.scss';
+import Select from '../Select';
 
 class Nav extends Component {
     constructor(props) {
@@ -13,17 +14,11 @@ class Nav extends Component {
         this.flagStatus = e.target.value;
         this.clearAll();
         this.sorting().map( (elm)=>this.Show(elm) )
-        
-        
-        
     }
     onChangeCheckbox(e) {
         this.flagReserve = e.target.checked;
         this.clearAll();
         this.sorting().map( (elm)=>this.Show(elm) )
-        
-        
-        
     }
     sorting() {
         let listElm = [...document.querySelectorAll(`${this.props.filterChecked}, ${this.props.filterSelect}`)];
@@ -76,26 +71,7 @@ class Nav extends Component {
                                 },'Только из заповедника'),
                             ]),
                         this.createElement('div',{className:'nav__filter'},
-                            this.createElement('select',{
-                                id: 'filter',
-                                size: 1,
-                                name: 'filter',
-                                className: 'nav__select',
-                                onChange: this.onChangeSelect,
-                            },
-                                [
-                                    this.createElement('option',{
-                                        value: 'enter',
-                                        selected: true
-                                    },'Входящие медведи'),
-                                    this.createElement('option',{
-                                        value: 'accept',
-                                    },'Принятые медведи'),
-                                    this.createElement('option',{
-                                        value: 'reject',
-                                    },'Отклонёные медведи'),
-    
-                                ]))
+                            this.componentTo(Select,{onChange: this.onChangeSelect}))
                     ])
                     ))
         )

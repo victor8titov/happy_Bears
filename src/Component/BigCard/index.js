@@ -25,8 +25,6 @@ class BigCard extends Component {
             document.querySelector('.blurfon').remove();
         },400);
         document.querySelector('.container').classList.remove('container_blur');
-        console.log('onclose')
-        
     }
     onAccept(e) {
         this.animationAfterDefined()

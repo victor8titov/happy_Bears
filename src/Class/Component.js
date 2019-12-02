@@ -21,6 +21,7 @@ class Component {
                 element.setAttribute(`data-${props.data.name}`,props.data.value) : 
                 undefined;
             props.hasOwnProperty('id') ? element.id = props.id : undefined;
+            props.hasOwnProperty('tabindex') ? element.setAttribute('tabindex',props.tabindex) : undefined;
 
             
             /* Form attribute */
@@ -30,6 +31,7 @@ class Component {
             props.hasOwnProperty('size') ? element.size = props.size : undefined;
             props.hasOwnProperty('selected') ? element.selected = props.selected : undefined;
             props.hasOwnProperty('for') ? element.setAttribute('for',props.for) : undefined;
+            props.hasOwnProperty('checked') ? element.setAttribute('checked',props.checked) : undefined;
             
             /* Events list */
             props.onClick !== undefined ? Component.onClick(props.onClick,element) : undefined; 

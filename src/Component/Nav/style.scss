@@ -6,36 +6,32 @@
         padding: 42px 0 39px 0;
     }
     &__row {
-        //@include grid-row(xs,space-between);
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        margin-left: -15px;
-        margin-right: -15px;
+        
+        text-align: center;
 
     }
     &__title {
-        /* @include grid-col((
-            sm: 5,
-        )); */
         margin: 0;
         font-weight: normal;
-        border: 1px solid red;
-        flex: 0 0 calc(100% / 12 * 6);
-        max-width: calc(100% / 12 * 6);
+        flex: 0 0 calc(100% / 12 * 12);
+        max-width: calc(100% / 12 * 12);
         padding-right: 15px;
         padding-left: 15px;
         
     }
     &__reserve {
-       /*  @include grid-col((
-            sm: 3,
-        )); */
-        border: 1px solid green;
-        flex: 0 0 calc(100% / 12 * 3);
-        max-width: calc(100% / 12 * 3);
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        flex: 0 0 calc(100% / 12 * 12);
+        max-width: calc(100% / 12 * 12);
         padding-right: 15px;
         padding-left: 15px;
+        margin-bottom: 30px;
     }
     
     &__label {
@@ -77,42 +73,18 @@
     }
 
     &__filter {
-        /* @include grid-col((
-            sm: 3,
-        )); */
-        border: 1px solid blue;
-        
-        flex: 0 0  calc(100% / 12 * 3);
-        max-width: calc(100% / 12 * 3);
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        flex: 0 0  calc(100% / 12 * 12);
+        max-width: calc(100% / 12 * 12);
         padding-right: 15px;
         padding-left: 15px;
         
-    }
-    &__select {
         
-        background: #E4E4E4;
-        outline: none;
-        border: none;
-        border-radius: 6px;
-        padding: 8px 20px 7px 10px;
-        cursor: pointer;
-        width: 220px;
-
-
-        // убираем стерлку 
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        appearance: none;
-    }
-    &__select::-ms-expand {  /* для IE */ 
-        display: none;
     }
    
-    &__select  option {
-        box-sizing: content-box;
-        filter: hue-rotate(125deg);
-        padding: 10px;
-    }
 }
 
 .hidden {
@@ -131,26 +103,39 @@
 
 
 @media (min-width: 576px) {
-    & {
-      
-    }
-  }
-  
-  @media (min-width: 768px) {
-    & {
-
+    .nav {
+        &__reserve {
+             flex: 0 0 calc(100% / 12 * 6);
+             max-width: calc(100% / 12 * 6);
+             margin-bottom: 0;
+         }
+        &__filter {
+            flex: 0 0  calc(100% / 12 * 6);
+            max-width: calc(100% / 12 * 6);
+            
+        }
     }
   }
   
   @media (min-width: 992px) {
-    & {
-
-    }
-  }
-  
-  @media (min-width: 1200px) {
-    & {
-        
+    .nav {
+        &__row {
+            text-align: left;
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+        &__title {
+            flex: 0 0 calc(100% / 12 * 6);
+            max-width: calc(100% / 12 * 6);
+        }
+        &__reserve {
+             flex: 0 0 calc(100% / 12 * 3);
+             max-width: calc(100% / 12 * 3);
+        }
+        &__filter {
+            flex: 0 0  calc(100% / 12 * 3);
+            max-width: calc(100% / 12 * 3);
+        }
     }
   }
 

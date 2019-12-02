@@ -6,23 +6,56 @@ import Bigcard from '../BigCard';
 class Card extends Component {
     constructor(props){
         super(props);
-        this.onShowBigCards = this.onShowBigCards.bind(this);
+        this.onShowBigCard = this.onShowBigCard.bind(this);
+        this.onAccept = this.onAccept.bind(this);
+        this.onReject = this.onReject.bind(this);
+        this.id = `b${this.props.id}`;
     }
     onAccept(e) {
-        e.stopPropagation();
         console.log('onAccept')
+        e.stopPropagation();
+        this.setStatus('accept');
+        this.animationAfterDefined();
     }
     onReject(e) {
-        e.stopPropagation();
         console.log('onReject')
+        e.stopPropagation();
+        this.setStatus('reject');
+        this.animationAfterDefined();
     }
-    onShowBigCards(e) {
+    setStatus(status) {
+        /* меняем статус медведя */
+        let elm = document.getElementById(this.id);
+        if (elm.dataset.status !== 'notDefined') return;
+        elm.setAttribute('data-status',status);
+
+        /* ! меняем состояние свойств в объекте */
+        this.props.bear.status = status;
+    }
+    animationAfterDefined() {
+        /* убираем кнопки с карточки */
+        let elm = document.getElementById(this.id);
+        let listButton = elm.querySelectorAll('.button');
+        listButton.forEach(button=>{
+            /* сначала анимация  */
+            button.classList.add('button_hidden');
+            /* теперь удаляем елемент со страницы */
+            setTimeout(()=>button.style.display = 'none', 400);
+        })
+
+        /* для плавности изменим стиль контейнера кнопок после анимации исчезновения кнопок */
+        setTimeout(()=>{
+            document.getElementById(this.id).querySelector('.card__description').classList.add('card__description_defined');
+        },400)
+    }
+    onShowBigCard(e) {
         /* создаем большую карточку из шаблона */
         let bigcard = this.componentTo(Bigcard,{
             bear:this.props.bear,
             url: this.props.url_img,
             onAccept: this.onAccept,
             onReject: this.onReject,
+            id: `bigcard_${this.id}`
         });
 
         /* размываем фон классом с фильтром */
@@ -37,11 +70,12 @@ class Card extends Component {
         document.getElementsByTagName('body')[0].append(modal);
     }
     render() {
-        let { bear, id, url_img} = this.props;
+        let { bear, url_img} = this.props;
+        
         return (
             this.createElement('article',{
                 className: `card ${bear.reserve? 'card_reserve' : ''}`,
-                id: `b${id}`,
+                id: this.id,
                 data: [
                         {
                             name: 'status',
@@ -52,7 +86,7 @@ class Card extends Component {
                             value: bear.reserve
                         }
                     ],
-                onClick: this.onShowBigCards
+                onClick: this.onShowBigCard
 
                 },[
                     this.createElement('div',{

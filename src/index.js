@@ -14,7 +14,40 @@ window.addEventListener('load',()=>{
     view.pipeline(
         [
             Header,
-            Nav,
+            [Nav,{
+                filterChecked: '[data-reserve]',
+                isChecked: (elm,flag)=>{
+                    let reserve = elm.dataset.reserve === 'true'? true : false;
+                    if ( flag && !reserve ) {
+                        /* скрываем тех медведей кто не в заповеднике */
+                        return false;
+                    } else {
+                        /* показываем медведей в заповеднике */
+                        return true;
+                    }
+                    if (!flag) {
+                        /* если флаг не стоит показывает все */
+                        return true;
+                    }
+                    
+                },
+                filterSelect: '[data-status]',
+                isSelect: (elm,flag)=>{
+                    let status = elm.dataset.status;
+                    switch(flag) {
+                        case 'accept':
+                            if (status === 'accept') return true;
+                            break;
+                        case 'reject':
+                            if (status === 'reject') return true;
+                            break;
+                        case 'enter':
+                            if (status === 'notDefined') return true;
+                            break;
+                    }
+                    return false;
+                }
+                }],
             Main,
             Footer
         ], document.querySelector('.container')

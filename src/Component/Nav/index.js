@@ -4,6 +4,34 @@ import './style.scss';
 class Nav extends Component {
     constructor(props) {
         super(props);
+        this.onChangeCheckbox = this.onChangeCheckbox.bind(this);
+        this.onChangeSelect = this.onChangeSelect.bind(this);
+        this.flagReserve = undefined;
+        this.flagStatus = undefined;
+    }
+    onChangeSelect(e) {
+        this.flagStatus = e.target.value;
+        let filter=e.target.value;
+        let listElement = [...document.querySelectorAll(this.props.filterSelect)];
+        listElement = listElement.filter((elm)=>this.props.isChecked(elm, this.flagReserve))
+
+        listElement.forEach((elm)=> this.props.isSelect(elm,filter) ? this.Show(elm) : this.Hidden(elm) )
+    }
+    onChangeCheckbox(e) {
+        this.flagReserve = e.target.checked;
+
+        let listElement = document.querySelectorAll(this.props.filterChecked);
+        listElement.forEach((elm)=> this.props.isChecked(elm,this.flagReserve) ? this.Show(elm) : this.Hidden(elm) )
+    }
+    Show(elm){
+        elm.classList.remove('absolute');
+        //elm.classList.add('static');
+        elm.classList.remove('hidden'); 
+    }
+    Hidden(elm) {
+        elm.classList.add('hidden');
+        //elm.classList.remove('static');
+        setTimeout(()=>elm.classList.add('absolute'),400); 
     }
     render() {
         return (
@@ -18,7 +46,8 @@ class Nav extends Component {
                                     type: 'checkbox',
                                     id: 'reserve',
                                     name: 'reserve',
-                                    className: 'nav__checkbox'
+                                    className: 'nav__checkbox',
+                                    onChange: this.onChangeCheckbox,
                                 }),
                                 this.createElement('label',{
                                     for: 'reserve',
@@ -30,7 +59,8 @@ class Nav extends Component {
                                 id: 'filter',
                                 size: 1,
                                 name: 'filter',
-                                className: 'nav__select'
+                                className: 'nav__select',
+                                onChange: this.onChangeSelect,
                             },
                                 [
                                     this.createElement('option',{

@@ -14,9 +14,10 @@
     &__title {
         @include grid-col((
             sm: 5,
-        ))
+        ));
         margin: 0;
         font-weight: normal;
+        
     }
     &__reserve {
         @include grid-col((
@@ -93,4 +94,18 @@
         filter: hue-rotate(125deg);
         padding: 10px;
     }
+}
+
+.hidden {
+    opacity: 0;
+    transform: scale(0.7);
+    left: 0px;
+    top: 10000px;
+    z-index: -100;
+}
+.absolute {
+    position: absolute;
+}
+.static {
+    position: static;
 }

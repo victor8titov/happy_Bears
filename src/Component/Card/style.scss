@@ -6,8 +6,13 @@
     margin: 0 10px 10px 10px;
     text-align: center;
     cursor: pointer;
-    transition: all 300ms ease-in-out;
+    
     display: static;
+
+    /* opacity: 1;
+    transform: scale(1); */
+
+    transition: all 4400ms ease-in-out;
     
     &_reserve {
         background-color: #208085;
@@ -20,6 +25,8 @@
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
+
+        
     }
     &__mask {
         display: none;

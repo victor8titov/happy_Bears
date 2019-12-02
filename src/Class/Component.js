@@ -1,9 +1,12 @@
 class Component {
     constructor(props) {
         this.props = props;
+        this.childrens = [];
     }
     componentTo(component,props) {
-        return (new component(props)).render();
+        let new_comp = new component(props); 
+        this.childrens = [...this.childrens,new_comp ]
+        return new_comp.render();
     }
     render(){}
     createElement(type,props=null, children=undefined) {

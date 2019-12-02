@@ -12,7 +12,10 @@ import BigCard from './Component/BigCard';
 const URL = "data.json";
 
 window.addEventListener('load',()=>{
+    /* оптимизация загрузки изображений прогружаем временную заставку */
+    (new Image()).src = "img/bear.jpg";
 
+    
     view.pipeline(
         [
             Header,

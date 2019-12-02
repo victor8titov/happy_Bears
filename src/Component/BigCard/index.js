@@ -58,7 +58,7 @@ class BigCard extends Component {
                 this.createElement('div',
                     {
                         className: 'bigcard__thumbnail',
-                        style: `background-image:url(${url+bear.thumbnail});`,
+                        style: `background-image:url(${url});`,
                     },
                         this.createElement('div',{className:`bigcard__mask ${bear.reserve ? 'bigcard__mask_reserve':''}`},
                             this.createElement('h3',null,'В заповеднике'))

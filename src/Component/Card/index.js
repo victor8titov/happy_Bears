@@ -10,6 +10,7 @@ class Card extends Component {
         this.onAccept = this.onAccept.bind(this);
         this.onReject = this.onReject.bind(this);
         this.id = `b${this.props.id}`;
+        this.urlImg = 'img/bear.jpg';
     }
     onAccept(e) {
         e.stopPropagation();
@@ -48,9 +49,10 @@ class Card extends Component {
     }
     onShowBigCard(e) {
         /* создаем большую карточку из шаблона */
+        console.log(this.urlImg)
         let bigcard = new Bigcard({
             bear:this.props.bear,
-            url: this.props.url_img,
+            url: this.urlImg,
             onAccept: this.onAccept,
             onReject: this.onReject,
             id: `bigcard_${this.id}`
@@ -73,7 +75,25 @@ class Card extends Component {
         document.getElementsByTagName('body')[0].append(modal);
     }
     componentDidMount() {
-        console.log('run after moutn')
+        /* 
+            данный код выполняется после монтирования в DOM 
+            выполняем загрузку картинок отдельно
+            как загрузка завершится меняем картинку
+        */
+
+        let {url_img, bear:{thumbnail}} = this.props;
+        ( new Promise( (resolve, reject)=>{
+            let url = url_img+thumbnail;
+            let image = new Image();
+            image.src = url;
+            image.addEventListener('load',()=>resolve(url));     
+        })).then(
+            (url)=>{
+                let elm = document.querySelector(`#${this.id} .card__thumbnail`);
+                elm.style = `background-image: url(${url});`;
+                this.urlImg = url;
+            }
+        )
     }
     render() {
         let { bear, url_img} = this.props;
@@ -97,7 +117,8 @@ class Card extends Component {
                 },[
                     this.createElement('div',{
                         className: `card__thumbnail ${bear.reserve? 'card__thumbnail_reserve' : ''}`,
-                        style: `background-image: url(${url_img + bear.thumbnail});`,
+                        //style: `background-image: url(${url_img + bear.thumbnail});`,
+                        style: `background-image: url(${this.urlImg});`,
                         },
                         this.createElement('div',{className: `card__mask ${bear.reserve? 'card__mask_reserve':''}`},
                             this.createElement('h3',null,'В заповеднике'))

@@ -11,65 +11,47 @@ class Nav extends Component {
     }
     onChangeSelect(e) {
         this.flagStatus = e.target.value;
-        let listElement = [...document.querySelectorAll(this.props.filterSelect)];
+        this.clearAll();
+        this.sorting().map( (elm)=>this.Show(elm) )
         
-        if (this.flagReserve !== undefined) {
-            listElement = listElement.filter((elm)=>{
-                if ( !this.props.isChecked(elm, this.flagReserve) ) {
-                    //this.Hidden(elm);
-                    return false;
-                } else {
-                    //this.Show(elm);
-                    return true;
-                }
-            })
-        }
-
-        listElement.forEach((elm)=> this.props.isSelect(elm,this.flagStatus) ? this.Show(elm) : this.Hidden(elm) );
+        
         
     }
     onChangeCheckbox(e) {
         this.flagReserve = e.target.checked;
-        let listElement = [...document.querySelectorAll(this.props.filterChecked)];
+        this.clearAll();
+        this.sorting().map( (elm)=>this.Show(elm) )
         
-        if (this.flagStatus !== undefined) {
-            listElement = listElement.filter((elm)=>{
-                if ( !this.props.isSelect(elm, this.flagStatus) ) {
-                    //this.Hidden(elm);
-                    return false;
-                } else {
-                    //this.Show(elm);
-                    return true;
-                }
-            })
-        }
-        listElement.forEach((elm)=> this.props.isChecked(elm,this.flagReserve) ? this.Show(elm) : this.Hidden(elm) )
+        
         
     }
     sorting() {
+        let listElm = [...document.querySelectorAll(`${this.props.filterChecked}, ${this.props.filterSelect}`)];
+        if (this.flagReserve !== undefined) {
+            listElm = listElm.filter( (elm)=>this.props.isChecked(elm, this.flagReserve) )
+        }
+        if (this.flagStatus !== undefined) {
+            listElm = listElm.filter( (elm)=>this.props.isSelect(elm, this.flagStatus) ) 
+        }
 
-        let listElement = [...document.querySelectorAll(this.props.filterSelect)];
-        listElement = listElement.filter((elm)=>{
-            if ( !this.props.isChecked(elm, this.flagReserve) ) {
-                this.Hidden(elm);
-                return false;
-            } else {
-                this.Show(elm);
-                return true;
-            }
-        })
-
-        if (this.flagStatus === undefined) return;
-        listElement.forEach((elm)=> this.props.isSelect(elm,filter) ? this.Show(elm) : this.Hidden(elm) )
+        return listElm;
+       
+    }
+    clearAll() {
+        let listElm = [...document.querySelectorAll(`${this.props.filterChecked}, ${this.props.filterSelect}`)];
+        listElm.map( (elm)=>this.Hidden(elm) );
     }
     Show(elm){
-        elm.classList.remove('absolute')
-        elm.classList.remove('hidden'); 
+        setTimeout(()=>{
+            elm.classList.remove('absolute')
+            elm.classList.remove('hidden'); 
+        },300)
+        
     }
     Hidden(elm) {
         elm.classList.add('hidden');
         //elm.classList.remove('static');
-        setTimeout(()=>elm.classList.add('absolute'),4400); 
+        setTimeout(()=>elm.classList.add('absolute'),300); 
     }
     render() {
         return (

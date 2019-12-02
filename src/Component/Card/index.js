@@ -50,7 +50,7 @@ class Card extends Component {
     }
     onShowBigCard(e) {
         /* создаем большую карточку из шаблона */
-        let bigcard = this.componentTo(Bigcard,{
+        let bigcard = new Bigcard({
             bear:this.props.bear,
             url: this.props.url_img,
             onAccept: this.onAccept,
@@ -66,7 +66,12 @@ class Card extends Component {
             в блок добовляется сгенерированая большая карточка
         */
         let modal = document.createElement('div');
-        modal.append(bigcard);
+        modal.className='blurfon';
+        modal.addEventListener('click',(e)=>{
+            e.stopPropagation();
+            bigcard.onClose();
+        });
+        modal.append(bigcard.render());
         document.getElementsByTagName('body')[0].append(modal);
     }
     render() {

@@ -7,13 +7,26 @@ class BigCard extends Component {
         super(props);
         this.onAccept = this.onAccept.bind(this);
         this.onReject = this.onReject.bind(this);
+        this.onClose = this.onClose.bind(this);
+        
+        /* let elm = document.getElementById(props.id);
+        let fon = elm.parentNode;
+        fon.addEventListener('click',(e)=>{
+            e.stopPropagation();
+            this.onClose(e);
+        }) */
+        
     }
     onClose(e) {
-        
-        let parent = e.target.parentNode;
-        parent.classList.add('bigcard_close');
-        setTimeout(()=>parent.remove(),400);
+        let elm = document.getElementById(this.props.id);
+        elm.classList.add('bigcard_close');
+        setTimeout(()=>{
+            elm.remove();
+            document.querySelector('.blurfon').remove();
+        },400);
         document.querySelector('.container').classList.remove('container_blur');
+        console.log('onclose')
+        
     }
     onAccept(e) {
         this.animationAfterDefined()
@@ -24,7 +37,6 @@ class BigCard extends Component {
         this.props.onReject(e);
     }
     animationAfterDefined() {
-        console.log('-:','animate',this.props)
         /* убираем кнопки с карточки */
         let elm = document.getElementById(this.props.id);
         let listButton = elm.querySelectorAll('.button');
@@ -34,18 +46,15 @@ class BigCard extends Component {
             /* теперь удаляем елемент со страницы */
             setTimeout(()=>button.style.display = 'none', 400);
         })
-
-        /* для плавности изменим стиль контейнера кнопок после анимации исчезновения кнопок */
-        /* setTimeout(()=>{
-            document.getElementById(this.id).querySelector('.card__description').classList.add('card__description_defined');
-        },400) */
     }
     render() {
         let {bear, url, name = bear.name, type=bear.type, gender=bear.gender, desc=bear.description} = this.props;
+        
         return (
             this.createElement('div',{
                 className:`bigcard ${bear.reserve?'bigcard_reserve':''}`,
                 id: this.props.id,
+                onClick: (e)=>e.stopPropagation(),
             },
             [
                 this.createElement('div',

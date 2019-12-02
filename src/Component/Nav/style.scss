@@ -3,26 +3,39 @@
 .nav {
     &__container {
         @include grid-container;
-        
-        
         padding: 42px 0 39px 0;
     }
     &__row {
-        @include grid-row(xs,space-between);
-        
+        //@include grid-row(xs,space-between);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: -15px;
+        margin-right: -15px;
+
     }
     &__title {
-        @include grid-col((
+        /* @include grid-col((
             sm: 5,
-        ));
+        )); */
         margin: 0;
         font-weight: normal;
+        border: 1px solid red;
+        flex: 0 0 calc(100% / 12 * 6);
+        max-width: calc(100% / 12 * 6);
+        padding-right: 15px;
+        padding-left: 15px;
         
     }
     &__reserve {
-        @include grid-col((
+       /*  @include grid-col((
             sm: 3,
-        ))
+        )); */
+        border: 1px solid green;
+        flex: 0 0 calc(100% / 12 * 3);
+        max-width: calc(100% / 12 * 3);
+        padding-right: 15px;
+        padding-left: 15px;
     }
     
     &__label {
@@ -64,9 +77,15 @@
     }
 
     &__filter {
-        @include grid-col((
+        /* @include grid-col((
             sm: 3,
-        ))
+        )); */
+        border: 1px solid blue;
+        
+        flex: 0 0  calc(100% / 12 * 3);
+        max-width: calc(100% / 12 * 3);
+        padding-right: 15px;
+        padding-left: 15px;
         
     }
     &__select {
@@ -109,4 +128,29 @@
     position: absolute;
     z-index: -100;
 }
+
+
+@media (min-width: 576px) {
+    & {
+      
+    }
+  }
+  
+  @media (min-width: 768px) {
+    & {
+
+    }
+  }
+  
+  @media (min-width: 992px) {
+    & {
+
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    & {
+        
+    }
+  }
 

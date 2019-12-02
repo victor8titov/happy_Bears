@@ -59,7 +59,8 @@ class Nav extends Component {
                 this.createElement('div',{className:'nav__container'},
                     this.createElement('div',{className:'nav__row'},
                     [
-                        this.createElement('h2',{className:'nav__title'},'Поступившие заявки'),
+                        this.createElement('div',{className:'nav__title'},
+                            this.createElement('h2',null,'Поступившие заявки')),
                         this.createElement('div',{className:'nav__reserve'},
                             [
                                 this.createElement('input',{

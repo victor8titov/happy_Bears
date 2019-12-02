@@ -53,6 +53,8 @@ class Component {
     }
     static onMousemove(){}
     static onMousewheel(){}
+    componentDidMount() {}
+    
 }
 
 export default Component;

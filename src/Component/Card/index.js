@@ -72,6 +72,9 @@ class Card extends Component {
         modal.append(bigcard.render());
         document.getElementsByTagName('body')[0].append(modal);
     }
+    componentDidMount() {
+        console.log('run after moutn')
+    }
     render() {
         let { bear, url_img} = this.props;
         

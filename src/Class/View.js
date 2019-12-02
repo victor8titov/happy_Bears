@@ -8,7 +8,7 @@ class View {
 
     }
     render(component,props,root){
-        root.append( this.convertToDOM(component, props) );    
+        root.append( this.convertToDOM(component, props) );
     }
     replace(component, props, dom_element){
         /* replace element in DOM */

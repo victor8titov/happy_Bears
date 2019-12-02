@@ -7,7 +7,9 @@ import Footer from './Component/Footer';
 import Spinner from './Component/Spinner';
 import BigCard from './Component/BigCard';
 
-const URL = "http://localhost:8080/data.json";
+//const URL = "http://localhost:8080/data.json";
+//const URL = "/happybears/data.json"
+const URL = "data.json";
 
 window.addEventListener('load',()=>{
 

@@ -49,7 +49,6 @@ class Card extends Component {
     }
     onShowBigCard(e) {
         /* создаем большую карточку из шаблона */
-        console.log(this.urlImg)
         let bigcard = new Bigcard({
             bear:this.props.bear,
             url: this.urlImg,

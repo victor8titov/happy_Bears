@@ -5,7 +5,6 @@ import Nav from './Component/Nav';
 import Main from './Component/Main';
 import Footer from './Component/Footer';
 import Spinner from './Component/Spinner';
-import BigCard from './Component/BigCard';
 
 //const URL = "http://localhost:8080/data.json";
 //const URL = "/happybears/data.json"
@@ -15,7 +14,10 @@ window.addEventListener('load',()=>{
     /* оптимизация загрузки изображений прогружаем временную заставку */
     (new Image()).src = "img/bear.jpg";
 
-    
+    /* 
+        метод pipeline последовательно создает DOM интерпретацию каждого в списке компонента 
+        и помещает его в указанный контейнер 
+    */
     view.pipeline(
         [
             Header,
@@ -62,6 +64,7 @@ window.addEventListener('load',()=>{
         .then(
             response => {
                 if (response.ok) {
+                    // пока идет загрузка заменим элемент с классом .main на компонент spinner
                     view.replace(Spinner,null,document.querySelector('.main'))
                     return response.json();
                 } else {
@@ -70,6 +73,7 @@ window.addEventListener('load',()=>{
                 },
             error => console.log('An error occurred.', error) )
         .then( json => {
+            // формируем окончательный вид страницы.
             view.replace(Main,json,document.querySelector('.main'))
             
         });
